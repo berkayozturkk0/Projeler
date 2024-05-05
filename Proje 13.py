@@ -26,14 +26,12 @@ class AnaEkran(QWidget):
         self.buton_2.clicked.connect(self.cikis)
         layout.addWidget(self.buton_2)
 
-        # Table to display all events
         self.etkinlikler_tablosu = QTableWidget()
         self.etkinlikler_tablosu.setColumnCount(5)
         self.etkinlikler_tablosu.setHorizontalHeaderLabels(['Etkinlik Adı', 'Yapımcı', 'Bilet Durumu', 'Türü','İşlem'])
         self.etkinlikler_tablosu.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         layout.addWidget(self.etkinlikler_tablosu)
 
-        # Table to display registered events
         self.kayitli_etkinlikler_tablosu = QTableWidget()
         self.kayitli_etkinlikler_tablosu.setColumnCount(3)
         self.kayitli_etkinlikler_tablosu.setHorizontalHeaderLabels(['Etkinlik Adı', 'Yapımcı', 'Bilet Durumu'])
@@ -41,13 +39,11 @@ class AnaEkran(QWidget):
         layout.addWidget(QLabel('Satın Alınan Biletler:'))
         layout.addWidget(self.kayitli_etkinlikler_tablosu)
 
-        # Unregister button for registered events
         self.iade_button = QPushButton('Bileti İade Et')
         self.iade_button.setStyleSheet("background-color: #2ecc71; color: white; border: 1px solid #2ecc71;")
         self.iade_button.clicked.connect(self.etkinlik_iade)
         layout.addWidget(self.iade_button)
 
-        # Populate table with all events
         self.populate_etkinlikler_tablosu()
 
         self.setLayout(layout)
@@ -93,10 +89,7 @@ class AnaEkran(QWidget):
             {'ad': 'Fareler ve İnsanlar', 'yazar': 'John Steinbeck', 'durum': 'Vizyonda', 'Türü': 'Tiyatro'},
         ]
 
-        # Rastgele 10 film etkinliği ekle
         etkinlikler.extend(random.sample(film_etkinlikleri, 10))
-
-        # Rastgele 10 tiyatro etkinliği ekle
         etkinlikler.extend(random.sample(tiyatro_etkinlikleri, 10))
 
         return etkinlikler[:count]
